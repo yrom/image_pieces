@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:image_pieces/src/image_helper.dart';
-import 'package:image_pieces/src/raw_image_provider.dart';
+
+import 'src/large_image.dart';
 
 void main() {
   runApp(MyApp());
@@ -58,24 +58,7 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: _image == null
             ? Text('No image selected.')
-            : FutureBuilder(
-                future: decodeFileToPiecesStream(_image, 8).toList(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return CircularProgressIndicator();
-                  }
-                  if (snapshot.hasData) {
-                    return Column(
-                      children: (snapshot.data as List)
-                          .map((i) => [Image(image: RawImageProvider(i)), Divider(height: 1,)])
-                          .expand((i) => i)
-                          .toList()
-                          
-                    );
-                  }
-                  return Text("${snapshot.error}");
-                },
-              ),
+            : LargeImage(file: _image),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: getImage,

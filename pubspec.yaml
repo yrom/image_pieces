@@ -27,6 +27,9 @@ dependencies:
   image: ^2.1.19
   path_provider: ^1.6.18
   image_picker: ^0.6.7+22
+  raw_image_provider: ^0.1.0
+  executor: 
+    git: https://github.com/yrom/dart-executor.git
 dev_dependencies:
   flutter_test:
     sdk: flutter
