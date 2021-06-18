@@ -8,6 +8,7 @@ import 'package:raw_image_provider/raw_image_provider.dart';
 
 import 'large_image_decoder.dart';
 
+/// A simple widget that support the very large image
 class LargeImage extends StatefulWidget {
   final File file;
   const LargeImage({Key key, this.file}) : super(key: key);
@@ -44,7 +45,7 @@ class _LargeImageState extends State<LargeImage> {
     _imageStreamError = null;
     _full = null;
     if (_chunks.isNotEmpty) _chunks.clear();
-    var imageStream = LargeImageDecoder(widget.file, pieceHeight: 1000)
+    var imageStream = LargeImageDecoder(widget.file, pieceHeight: pieceHeight)
         .decodeToPiecesStream();
     _subscription = imageStream.listen(
       _onData,

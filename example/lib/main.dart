@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import 'src/large_image.dart';
+import 'package:image_pieces/image_pieces.dart';
 
 void main() {
   runApp(MyApp());
